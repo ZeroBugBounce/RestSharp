@@ -71,7 +71,7 @@ namespace RestSharp
 		/// </summary>
 		X509CertificateCollection ClientCertificates { get; set; }
 		IRestResponse Execute(IRestRequest request);
-		IRestResponse<T> Execute<T>(IRestRequest request) where T : new();
+        IRestResponse<T> Execute<T>(IRestRequest request);
 		
 		IWebProxy Proxy { get; set; }
 #endif
@@ -115,8 +115,8 @@ namespace RestSharp
 #if FRAMEWORK
 		IRestResponse ExecuteAsGet(IRestRequest request, string httpMethod);
 		IRestResponse ExecuteAsPost(IRestRequest request, string httpMethod);
-		IRestResponse<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod) where T : new();
-		IRestResponse<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod) where T : new();
+		IRestResponse<T> ExecuteAsGet<T>(IRestRequest request, string httpMethod);
+        IRestResponse<T> ExecuteAsPost<T>(IRestRequest request, string httpMethod);
 #endif
 	}
 }

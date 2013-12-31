@@ -22,6 +22,7 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using RestSharp.Extensions;
+using System.Runtime.Serialization;
 
 namespace RestSharp.Deserializers
 {
@@ -55,7 +56,7 @@ namespace RestSharp.Deserializers
 				RemoveNamespace(doc);
 			}
 
-            var x = Activator.CreateInstance<T>();
+            var x = (T)FormatterServices.GetSafeUninitializedObject(typeof(T)); //Activator.CreateInstance<T>();
 			var objType = x.GetType();
 
 			if (objType.IsSubclassOfRawGeneric(typeof(List<>)))

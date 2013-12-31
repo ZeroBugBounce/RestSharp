@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using RestSharp.Extensions;
+using System.Runtime.Serialization;
 
 namespace RestSharp.Deserializers
 {
@@ -21,7 +22,7 @@ namespace RestSharp.Deserializers
 
 		public T Deserialize<T>(IRestResponse response)
 		{
-			var target = Activator.CreateInstance<T>();
+            var target = (T)FormatterServices.GetSafeUninitializedObject(typeof(T)); //Activator.CreateInstance<T>();
 
 			if (target is IList)
 			{
